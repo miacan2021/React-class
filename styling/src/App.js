@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './App.css';
 import EventList from './EventList'
 import Model from './Model'
@@ -7,11 +7,14 @@ import NewEventForm from './NewEventForm';
 function App() {
   const [showModel, setShowModel] = useState(false)
   const [showEvent, setShowEvent] = useState(true)
-  const [events, setEvents] = useState([
-    {title:'React Dojo', id:1},
-    {title:'Svelte Meetup', id:2},
-    {title:'Remix Lanch', id:3},
-  ])
+  const [events, setEvents] = useState([])
+  console.log(events)
+  
+  useEffect(() => {
+    fetch('http://localhost:3000/events')
+    .then(res => res.json())
+    .then(json => setEvents(json))
+  },[])
 
   const handleClose = () =>{
     setShowModel(false)

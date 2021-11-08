@@ -3,7 +3,7 @@ import styles from './NewEventForm.module.css'
 
 export default function NewEventForm(){
     const [title, setTitle] = useState('Title')
-    const [date, setDate] = useState('2021/11/8')
+    const [date, setDate] = useState('')
 
 
     return(
